@@ -1,0 +1,28 @@
+<div class="wrapper" *ngIf="procedures.length">
+  <nav aria-label="...">
+  <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+
+    <li
+      *ngFor="let page of pager.pages; i as index"
+      class="page-item"
+      [ngClass]="{active:pager.currentPage === page}"
+    >
+      <a class="page-link" (click)="setPage(page)">{{ page }}</a>
+    </li>
+
+  </ul>
+  </nav>
+
+  <nav aria-label="..." class="page-size">
+    <span class="title">Показать записи</span>
+    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+      <li
+        *ngFor="let size of pageSize"
+        class="page-item"
+        [ngClass]="{active:currentPageSize === size}">
+        <a class="page-link" (click)="setPageSize(size)">{{size}}</a>
+      </li>
+    </ul>
+  </nav>
+
+</div>

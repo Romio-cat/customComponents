@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  font-size: 14px;
+
+  & span:first-of-type {
+    cursor: pointer;
+  }
+}
+
+.wrapper {
+  border: 1px solid gray;
+  border-radius: .25rem;
+}
+
+.name {
+  cursor: pointer;
+}
+

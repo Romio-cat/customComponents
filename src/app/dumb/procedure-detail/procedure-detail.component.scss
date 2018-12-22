@@ -1,0 +1,26 @@
+:host {
+  display: block;
+  border-bottom: 1px solid grey;
+  overflow: hidden;
+
+  &:first-of-type {
+    border-radius: .25rem .25rem 0 0;
+  }
+
+  &:last-of-type {
+    border-bottom: none;
+    border-radius: .25rem;
+  }
+}
+
+.detail {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: white;
+
+  .name {
+    flex-basis: 200px;
+  }
+}
+

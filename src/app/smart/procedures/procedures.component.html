@@ -1,0 +1,13 @@
+<app-procedures-search
+  (outputData)="searchProcedure($event)">
+</app-procedures-search>
+
+<app-procedures-list
+  (onSort)="onSort()"
+  [pagedProcedures]="pagedProcedures$ | async">
+</app-procedures-list>
+
+<app-procedures-pagination
+  (setItems)="setItems($event)"
+  [procedures]="procedures$ | async">
+</app-procedures-pagination>
