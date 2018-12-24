@@ -4,12 +4,12 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material-module/material.module';
 
-import { ProceduresComponent } from './smart/procedures/procedures.component';
-import { ProceduresSearchComponent } from './smart/procedures-search/procedures-search.component';
-import { ProceduresListComponent } from './smart/procedures-list/procedures-list.component';
-import { ProceduresPaginationComponent } from './smart/procedures-pagination/procedures-pagination.component';
+import { ProceduresComponent } from './components/smart/procedures/procedures.component';
+import { ProceduresSearchComponent } from './components/smart/procedures-search/procedures-search.component';
+import { ProceduresListComponent } from './components/smart/procedures-list/procedures-list.component';
+import { ProceduresPaginationComponent } from './components/smart/procedures-pagination/procedures-pagination.component';
 
-import { ProcedureDetailComponent } from './dumb/procedure-detail/procedure-detail.component';
+import { ProcedureDetailComponent } from './components/dumb/procedure-detail/procedure-detail.component';
 
 import { ProcedureDataService } from './services/procedure-data.service';
 import { ReactiveFormsModule } from '@angular/forms';

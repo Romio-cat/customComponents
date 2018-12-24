@@ -1,0 +1,20 @@
+<ng-container *ngIf="pagedProcedures; else thenBlock">
+  <header>
+    <span class="title" (click)="titleSort()">Название (sort)</span>
+    <span>ID</span>
+    <span>Статус</span>
+    <span>Владелец</span>
+    <span>Последнее изменение</span>
+  </header>
+
+  <section>
+    <app-procedure-detail
+      *ngFor="let procedure of pagedProcedures | async; trackBy: trackByFn"
+      [procedure]="procedure"
+    ></app-procedure-detail>
+  </section>
+</ng-container>
+
+<ng-template #thenBlock>
+  <p>Нет совпадений</p>
+</ng-template>

@@ -1,13 +1,12 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input, OnChanges,
   OnInit,
-  Output, SimpleChange, SimpleChanges
+  Output,
 } from '@angular/core';
-import {Procedure} from '../../procedure';
+import {Procedure} from '../../../procedure';
 
 @Component({
   selector: 'app-procedures-list',
@@ -19,21 +18,18 @@ export class ProceduresListComponent implements OnInit, OnChanges {
   @Input() pagedProcedures: Procedure[];
   @Output() onSort = new EventEmitter();
 
-  constructor(private changeDetectionRef: ChangeDetectorRef) {
+  constructor() {
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    console.log(changes.pagedProcedures);
+  ngOnChanges() {
     // console.log(this.pagedProcedures);
   }
 
   ngOnInit() {
-    this.changeDetectionRef.detectChanges();
   }
 
   public titleSort(): void {
     this.onSort.emit();
-    this.changeDetectionRef.detectChanges();
   }
 
   public trackByFn(index, item) {

@@ -1,8 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Procedure} from '../../procedure';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Observable, of} from 'rxjs/index';
-import {catchError, debounceTime, distinctUntilChanged, map, tap} from 'rxjs/internal/operators';
 
 @Component({
   selector: 'app-procedures-search',

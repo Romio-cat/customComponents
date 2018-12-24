@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Procedure} from '../../procedure';
+import {Procedure} from '../../../procedure';
 
 @Component({
   selector: 'app-procedure-detail',
@@ -8,6 +8,7 @@ import {Procedure} from '../../procedure';
 })
 export class ProcedureDetailComponent implements OnInit {
   @Input() procedure: Procedure;
+
   constructor() { }
 
   ngOnInit() {
