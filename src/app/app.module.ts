@@ -13,6 +13,8 @@ import { ProcedureDetailComponent } from './components/dumb/procedure-detail/pro
 
 import { ProcedureDataService } from './services/procedure-data.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SliderComponent } from './components/smart/slider/slider.component';
+import { SlideComponent } from './components/dumb/slide/slide.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProceduresSearchComponent,
     ProceduresPaginationComponent,
     ProcedureDetailComponent,
+    SliderComponent,
+    SlideComponent,
   ],
   imports: [
     BrowserModule,

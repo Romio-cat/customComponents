@@ -1,0 +1,30 @@
+<button class="prev" (click)="dec()"></button>
+<button class="next" (click)="inc()"></button>
+
+<div class="slide-wrapper">
+  <div
+    class="slide"
+    *ngFor="let slide of sliders; index as slideIndex"
+    [style.opacity]="counter === slideIndex ? 1 : 0"
+    [ngStyle]="{'transform': 'translateX(' + currentTransition[slideIndex] + 'px)'}"
+  >
+
+    <h3>Tinkoff Black</h3>
+
+    <p>{{ slide }}
+      <br>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, dolorum.
+    </p>
+
+    <div class="wrapper">
+      <button class="order">Оформить карту</button>
+      <span class="current-slide">{{ slideIndex + 1 }}/{{ sliders.length }}</span>
+    </div>
+  </div>
+</div>
+
+<div class="navigation">
+  <button class="navigation-btn"></button>
+</div>
+
+
