@@ -3,8 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 750px;
-  margin: 10px auto;
+  min-width: 750px;
   padding: 50px 50px 80px;
   background-color: white;
   box-shadow: 0 2px 2px rgba(10,16,20,.24), 0 0 2px rgba(10,16,20,.12);
@@ -15,7 +14,7 @@
   display: flex;
   min-height: 250px;
   width: 500px;
-  overflow: hidden;
+  //overflow: hidden;
 }
 
 .slide {
@@ -129,62 +128,19 @@ p {
   border: none;
   border-radius: 50%;
   margin-right: 10px;
+  transition: background-color .2s;
   cursor: pointer;
+  outline: none;
+
+  &:hover {
+    background-color: #311eff;
+  }
 
   &:last-of-type {
     margin-right: 0;
   }
 }
 
-.show {
-  opacity: 1;
-}
-
-//.active {
-//  background-color: #311eff;
-//}
-
-.leftHide {
-  animation: leftHide .5s 1 0s ease-out;
-}
-
-.leftShow {
-  animation: leftShow .5s 1 0s ease-out;
-}
-
-.rightShow {
-  animation: rightShow .5s 1 0s ease-out;
-}
-
-@keyframes leftShow {
-  0% {
-    transform: translateX(-100%);
-    //opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    //opacity: 1;
-  }
-}
-
-@keyframes leftHide {
-  0% {
-    transform: translateX(0);
-    //opacity: 1;
-  }
-  100% {
-    transform: translateX(-100%);
-    display: none
-  }
-}
-
-@keyframes rightShow {
-  0% {
-    transform: translateX(200%);
-    //opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    //opacity: 1;
-  }
+.active {
+  background-color: #311eff;
 }

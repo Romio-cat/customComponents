@@ -63,6 +63,10 @@ export class SliderComponent implements OnInit, OnChanges {
     // console.log(this.currentTransition);
   }
 
+  public showSlide(index) {
+    this.counter = index;
+  }
+
 
 
 }

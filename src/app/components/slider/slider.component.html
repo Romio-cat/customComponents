@@ -5,7 +5,7 @@
   <div
     class="slide"
     *ngFor="let slide of sliders; index as slideIndex"
-    [style.opacity]="counter === slideIndex ? 1 : 0"
+    [style.opacity]="counter === slideIndex ? 1 : 0.5"
     [ngStyle]="{'transform': 'translateX(' + currentTransition[slideIndex] + 'px)'}"
   >
 
@@ -24,7 +24,12 @@
 </div>
 
 <div class="navigation">
-  <button class="navigation-btn"></button>
+  <button
+    class="navigation-btn"
+    *ngFor="let slide of sliders; index as i"
+    [class.active]="counter === i"
+    (click)="showSlide(i)"
+  ></button>
 </div>
 
 
