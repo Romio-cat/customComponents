@@ -5,8 +5,9 @@
   <div
     class="slide"
     *ngFor="let slide of sliders; index as slideIndex"
-    [style.opacity]="counter === slideIndex ? 1 : 0.5"
-    [ngStyle]="{'transform': 'translateX(' + currentTransition[slideIndex] + 'px)'}"
+    [style.opacity]="current === slideIndex ? 1 : 0"
+    [ngStyle]="{
+      'transform': 'translateX(' + currentTransition[slideIndex] + 'px)'}"
   >
 
     <h3>Tinkoff Black</h3>
@@ -18,7 +19,7 @@
 
     <div class="wrapper">
       <button class="order">Оформить карту</button>
-      <span class="current-slide">{{ slideIndex + 1 }}/{{ sliders.length }}</span>
+      <span class="current-slide">{{ slideIndex }}/{{ sliders.length - 1 }}</span>
     </div>
   </div>
 </div>
@@ -27,7 +28,7 @@
   <button
     class="navigation-btn"
     *ngFor="let slide of sliders; index as i"
-    [class.active]="counter === i"
+    [class.active]="current === i"
     (click)="showSlide(i)"
   ></button>
 </div>
