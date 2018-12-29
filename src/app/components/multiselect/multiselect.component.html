@@ -1,3 +1,20 @@
-<p>
-  multiselect works!
-</p>
+<div class="selected-items">
+
+  <div class="item-container">
+    <div class="item" *ngFor="let item of selectedItems; index as i">
+      {{ item }}
+      <button class="delete-item" (click)="deleteItem(i)">&#10006;</button>
+    </div>
+
+    <label class="input-container">
+      <input [placeholder]="selectedItems.length ? '' : 'Search items'">
+    </label>
+  </div>
+
+  <button class="dropdown-button"></button>
+</div>
+
+
+<app-dropdown-list
+  [dropdownList]="dropdownList | async">
+</app-dropdown-list>
