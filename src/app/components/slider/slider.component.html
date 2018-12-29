@@ -1,12 +1,8 @@
-<button class="prev" (click)="prevSlide()"></button>
-<button class="next" (click)="nextSlide()"></button>
+<button class="prev" (click)="dec()"></button>
+<button class="next" (click)="inc()"></button>
 
 <div class="slide-wrapper">
   <app-slide
-    [sliders]="sliders"
-    [slide]="slide"
-    [slideIndex]="slideIndex"
-    [current]="current"
     class="slide"
     *ngFor="let slide of sliders; index as slideIndex"
     [ngStyle]="{
@@ -24,7 +20,7 @@
 
     <div class="wrapper">
       <button class="order">Оформить карту</button>
-      <span class="current-slide">{{ slideIndex + 1 }}/{{ sliders.length }}</span>
+      <span class="current-slide">{{ slideIndex }}/{{ sliders.length - 1 }}</span>
     </div>
   </app-slide>
 </div>
