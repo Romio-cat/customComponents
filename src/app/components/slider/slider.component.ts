@@ -6,20 +6,24 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./slider.component.scss']
 })
 export class SliderComponent implements OnInit {
+  private width = 600;
   public sliders: string[] = [
     'first slider',
     'second slider',
     'third slider',
     'forth slider',
   ];
-  private width = 600;
   public current = 0;
-  public total = this.sliders.length;
+  public total: number = this.sliders.length;
   public currentTransition: number[] = [];
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.initSlide();
+  }
+
+  public initSlide(): void {
     for (let i = 0; i < this.total; i++) {
       this.currentTransition[i] = 0;
     }
@@ -27,8 +31,8 @@ export class SliderComponent implements OnInit {
     this.currentTransition[this.total - 1] = -this.width * this.total;
   }
 
-  public inc(): void {
-    let moved = this.current - 1;
+  public nextSlide(): void {
+    let moved: number = this.current - 1;
     this.current = (this.current < this.total - 1) ? this.current + 1 : 0;
 
     moved = moved < 0 ? this.total - 1 : moved;
@@ -38,15 +42,11 @@ export class SliderComponent implements OnInit {
     }
 
     this.currentTransition[moved] = this.currentTransition[moved] + this.width * this.total;
-
-    // console.log('current =  ', this.current);
-    // console.log('moved =  ', moved);
-    // console.log(this.currentTransition);
   }
 
-  public dec(): void {
+  public prevSlide(): void {
     this.current = (this.current > 0 ) ? this.current - 1 : this.total - 1;
-    let moved = this.current - 1;
+    let moved: number = this.current - 1;
 
     moved = (moved < 0) ? this.total - 1 : moved;
 
@@ -56,14 +56,11 @@ export class SliderComponent implements OnInit {
 
     this.currentTransition[moved] = this.currentTransition[moved] - this.width * this.total;
 
-    // console.log('current = ' + this.current);
-    // console.log('moved = ' + moved);
-    // console.log(this.currentTransition);
   }
 
-  public showSlide(index) {
-    let diff = index - this.current;
-    let moved;
+  public showSlide(index: number): void {
+    let diff: number = index - this.current;
+    let moved: number;
 
     if (diff > 0) {
       for (let i = 0; i < diff; i++) {
