@@ -7,6 +7,7 @@ import { MaterialModule } from './material-module/material.module';
 
 import { ProceduresModule } from './components/procedures/procedures.module';
 import { SliderModule } from './components/slider/slider.module';
+import { MultiselectModule } from './components/multiselect/multiselect.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { SliderModule } from './components/slider/slider.module';
     MaterialModule,
     ProceduresModule,
     SliderModule,
+    MultiselectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
