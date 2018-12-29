@@ -2,7 +2,7 @@
 
   <div class="item-container">
     <div class="item" *ngFor="let item of selectedItems; index as i">
-      {{ item }}
+      {{ item.title }}
       <button class="delete-item" (click)="deleteItem(i)">&#10006;</button>
     </div>
 
@@ -11,10 +11,11 @@
     </label>
   </div>
 
-  <button class="dropdown-button"></button>
+  <button class="dropdown-button" (click)="open()"></button>
 </div>
 
-
 <app-dropdown-list
-  [dropdownList]="dropdownList | async">
+  *ngIf="isOpen"
+  [dropdownList]="dropdownList$ | async"
+  (onChanged)="onChanged($event)">
 </app-dropdown-list>

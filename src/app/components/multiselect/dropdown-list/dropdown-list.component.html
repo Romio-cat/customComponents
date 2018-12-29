@@ -1,4 +1,9 @@
-<div class="list-items" *ngFor="let item of dropdownList">
-  {{ item }}
-  <label><input type="checkbox"></label>
-</div>
+<ng-container  *ngFor="let item of dropdownList; index as i">
+
+  <label class="list-items">
+    {{ item.title | titlecase }}
+    <input type="checkbox" (change)="onChange($event, i)" >
+    <span class="mark"></span>
+  </label>
+
+</ng-container>
