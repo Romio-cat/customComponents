@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { ProcedureDataService } from '../../services/procedure-data.service';
+import { ProcedureDataService } from './services/procedure-data.service';
 
 import { ProcedureDetailComponent } from './procedures-list/procedure-detail/procedure-detail.component';
 import { ProceduresPaginationComponent } from './procedures-pagination/procedures-pagination.component';
