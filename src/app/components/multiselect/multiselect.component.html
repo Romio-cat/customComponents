@@ -1,21 +1,29 @@
 <div class="selected-items">
 
   <div class="item-container">
-    <div class="item" *ngFor="let item of selectedItems; index as i">
-      {{ item.title }}
+    <div class="item" *ngFor="let item of selectedItems$ | async">
+      {{ item.title | titlecase }}
       <button class="delete-item" (click)="deleteItem(item.id)">&#10006;</button>
     </div>
 
-    <label class="input-container">
-      <input [placeholder]="selectedItems.length ? '' : 'Search items'">
+    <label class="input-container" [formGroup]="form">
+      <input
+        formControlName="item"
+        [placeholder]="(selectedItems$ | async)?.length ? '' : 'Search items'">
     </label>
   </div>
 
-  <button class="dropdown-button" (click)="open()"></button>
+  <button
+    class="dropdown-button"
+    (click)="open()"
+    [ngClass]="isOpen ? 'reverse' : ''">
+  </button>
+
+  <app-dropdown-list
+    *ngIf="isOpen"
+    [dropdownList]="dropdownList$ | async"
+    (onChanged)="onChanged($event)">
+  </app-dropdown-list>
 </div>
 
-<app-dropdown-list
-  *ngIf="isOpen"
-  [dropdownList]="dropdownList$ | async"
-  (onChanged)="onChanged($event)">
-</app-dropdown-list>
+

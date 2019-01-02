@@ -7,6 +7,7 @@
   min-width: 500px;
   margin-top: -300px;
   padding: 50px;
+  font-family: Roboto, sans-serif;
   background-color: white;
   box-shadow: 0 2px 2px rgba(10,16,20,.24), 0 0 2px rgba(10,16,20,.12);
 }
@@ -74,16 +75,12 @@
   }
 }
 
-
-
 .dropdown-button {
   border: none;
-  //margin-left: auto;
   padding: 5px 10px;
   background-color: transparent;
   outline: none;
   cursor: pointer;
-  //border: 1px solid red;
 
   &:before {
     content: '';
@@ -94,6 +91,12 @@
     border: 1px solid #9c9b9b;
     border-top: none;
     border-left: none;
+    transition: transform .1s;
     transform: rotate(45deg);
   }
+}
+
+.reverse:before {
+  margin-top: 8px;
+  transform: rotate(225deg);
 }

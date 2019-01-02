@@ -1,8 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemsDataService } from './services/items-data.service';
-import { Observable } from 'rxjs/index';
+import {
+  BehaviorSubject,
+  combineLatest,
+  Observable,
+  throwError
+} from 'rxjs/index';
 import { Item } from './item';
-import { map } from 'rxjs/internal/operators';
+import {
+  catchError,
+  debounceTime,
+  distinctUntilChanged,
+  map,
+  switchMap,
+  tap
+} from 'rxjs/internal/operators';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-multiselect',
@@ -11,57 +24,82 @@ import { map } from 'rxjs/internal/operators';
 })
 export class MultiselectComponent implements OnInit {
   public dropdownList$: Observable<Item[]>;
-  public selectedItems: Item[] = [];
+  public selectedItems$: Observable<Item[]>;
+  public searchItem$ = new BehaviorSubject<string>('');
   public isOpen = false;
+  public form: FormGroup;
 
-  constructor(private itemsDataService: ItemsDataService) { }
+  constructor(private itemsDataService: ItemsDataService, private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.dropdownList$ = this.itemsDataService.getItems();
-    // this.itemsDataService.getItems()
-    //   .pipe(map((x: Item[]) => x.filter((y: Item) => y.selected)))
-    //   .subscribe((res: Item[]) => {
-    //     this.selectedItems = res;
-    // });
-    // console.log(this.selectedItems);
+    this.dropdownList$ = combineLatest(this.searchItem$, this.itemsDataService.getItems())
+      .pipe(
+        // debounceTime(100),
+        distinctUntilChanged(),
+        map(([searchValue, items]) => {
+          return items.filter((item: Item) => {
+            if (~item.title.indexOf(searchValue)) {
+              // console.log(item);
+              return item;
+            }
+          });
+        }),
+        catchError(error => throwError(error)),
+      );
+
+    // console.log(this.dropdownList$);
+
+    this.form = this.fb.group({
+      item: ['', Validators.required],
+    });
+
+    this.form.get('item').valueChanges.subscribe(
+      (data: string) => {
+        // console.log(data);
+        this.isOpen = true;
+        this.searchItem$.next(data);
+      }
+    );
   }
 
   public onChanged(event): void {
-    this.dropdownList$
+    console.log(event);
+    this.selectedItems$ = this.dropdownList$
       .pipe(
-        map((x: Item[]) => {
-          x.forEach((item: Item, index: number) => {
-            item.selected = event.index === index ? event.check : item.selected;
+        map((items: Item[]) => {
+          items.forEach((item: Item) => {
+            item.selected = event.id === item.id ? event.check : item.selected;
           });
-          // console.log(x);
-          return x.filter((y: Item) => y.selected);
+          console.log('selected', items);
+          return items.filter((item: Item) => {
+            return item.selected;
+          });
         }),
-      )
-      .subscribe((res: Item[]) => {
-        this.selectedItems = res;
-      });
-    // console.log(this.selectedItems);
+        catchError(error => throwError(error)),
+      );
+
+    // console.log(this.selectedItems$);
+
+    // this.dropdownList$.subscribe(a => console.log('drop', a));
+    // this.selectedItems$.subscribe(a => console.log('selected', a));
   }
 
   public deleteItem(id: number): void {
-    this.dropdownList$
+    this.selectedItems$ = this.dropdownList$
       .pipe(
         map((x: Item[]) => {
           x.forEach((item: Item) => {
             if (item.id === id) {
               item.selected = false;
-              console.log(item);
+              // console.log(item);
             }
           });
-          console.log(x);
+          // console.log(x);
           return x.filter((y: Item) => y.selected);
         }),
-      )
-      .subscribe((res: Item[]) => {
-        this.selectedItems = res;
-      });
-
-    console.log(this.selectedItems);
+        catchError(error => throwError(error)),
+      );
+    // console.log(this.selectedItems$);
   }
 
   public open(): void {

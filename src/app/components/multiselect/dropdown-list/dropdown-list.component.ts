@@ -20,8 +20,8 @@ export class DropdownListComponent implements OnInit, OnChanges {
   ngOnInit() {
   }
 
-  public onChange(event, index: number): void {
-    this.onChanged.emit({ check: event.target.checked, index });
+  public onChange(event, id): void {
+    this.onChanged.emit({ check: event.target.checked, id });
     // console.log(this.dropdownList);
     // console.log(event.path);
   }

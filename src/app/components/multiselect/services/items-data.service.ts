@@ -14,11 +14,8 @@ export class ItemsDataService {
       items = items.filter(x => x.title.toLocaleLowerCase().indexOf(term.toLocaleLowerCase()) > -1);
     }
     return of(items);
+      // .pipe(delay(10));
   }
-
-  // public getItems(): Observable<string[]> {
-  //   return of(this.dropdownList);
-  // }
 }
 
 function getMockItems(): Item[] {

@@ -1,14 +1,17 @@
 <ng-container
-  *ngFor="let item of dropdownList; index as i"
+  *ngFor="let item of dropdownList"
   (click)="clickOut($event)">
 
   <label class="list-items">
     {{ item.title | titlecase }}
     <input
       type="checkbox"
-      [(ngModel)]="item.selected"
-      (change)="onChange($event, i)">
+      [ngModel]="item.selected"
+      (change)="onChange($event, item.id)">
     <span class="mark"></span>
   </label>
-
 </ng-container>
+
+<ng-template #notFound>
+  <label class="list-items">Item not found</label>
+</ng-template>
