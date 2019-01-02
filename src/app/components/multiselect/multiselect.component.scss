@@ -48,6 +48,11 @@
     border: none;
     outline: none;
     cursor: pointer;
+    transition: color .1s;
+
+    &:hover {
+      color: #ff6f6f;
+    }
   }
 }
 

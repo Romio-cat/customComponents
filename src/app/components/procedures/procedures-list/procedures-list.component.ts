@@ -6,7 +6,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import {Procedure} from '../../../procedure';
+import {Procedure} from '../procedure';
 
 @Component({
   selector: 'app-procedures-list',

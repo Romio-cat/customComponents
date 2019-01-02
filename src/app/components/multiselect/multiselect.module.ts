@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { MultiselectComponent } from './multiselect.component';
 import { DropdownListComponent } from './dropdown-list/dropdown-list.component';
 import { ItemsDataService } from './services/items-data.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
   ],
   exports: [
     MultiselectComponent,

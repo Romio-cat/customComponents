@@ -3,7 +3,7 @@
   <div class="item-container">
     <div class="item" *ngFor="let item of selectedItems; index as i">
       {{ item.title }}
-      <button class="delete-item" (click)="deleteItem(i)">&#10006;</button>
+      <button class="delete-item" (click)="deleteItem(item.id)">&#10006;</button>
     </div>
 
     <label class="input-container">

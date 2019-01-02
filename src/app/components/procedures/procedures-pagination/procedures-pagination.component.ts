@@ -5,7 +5,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import {Procedure} from '../../../procedure';
+import {Procedure} from '../procedure';
 import { getPager } from '../helpers/pager';
 import {BehaviorSubject} from 'rxjs/index';
 

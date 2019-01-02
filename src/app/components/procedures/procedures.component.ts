@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {Procedure} from '../../procedure';
+import {Procedure} from './procedure';
 import {ProcedureDataService} from './services/procedure-data.service';
 import {BehaviorSubject, combineLatest, Observable, throwError} from 'rxjs';
 import {catchError, debounceTime, distinctUntilChanged, map} from 'rxjs/internal/operators';

@@ -23,12 +23,12 @@ export class ItemsDataService {
 
 function getMockItems(): Item[] {
   return [
-    { title: 'first', selected: false },
-    { title: 'second', selected: false },
-    { title: 'third', selected: false },
-    { title: 'forth', selected: false },
-    { title: 'fifth', selected: false },
-    { title: 'sixth', selected: false },
-    { title: 'seventh', selected: false },
+    { id: 0, title: 'first', selected: false },
+    { id: 1, title: 'second', selected: false },
+    { id: 2, title: 'third', selected: false },
+    { id: 3, title: 'forth', selected: false },
+    { id: 4, title: 'fifth', selected: false },
+    { id: 5, title: 'sixth', selected: false },
+    { id: 6, title: 'seventh', selected: false },
   ];
 }

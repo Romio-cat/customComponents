@@ -43,14 +43,17 @@ export class MultiselectComponent implements OnInit {
     // console.log(this.selectedItems);
   }
 
-  public deleteItem(element: number): void {
+  public deleteItem(id: number): void {
     this.dropdownList$
       .pipe(
         map((x: Item[]) => {
-          x.forEach((item: Item, index: number) => {
-            item.selected = element === index ? false : item.selected;
+          x.forEach((item: Item) => {
+            if (item.id === id) {
+              item.selected = false;
+              console.log(item);
+            }
           });
-          // console.log(x);
+          console.log(x);
           return x.filter((y: Item) => y.selected);
         }),
       )
@@ -58,7 +61,7 @@ export class MultiselectComponent implements OnInit {
         this.selectedItems = res;
       });
 
-    // console.log(this.selectedItems);
+    console.log(this.selectedItems);
   }
 
   public open(): void {
