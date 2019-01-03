@@ -3,16 +3,14 @@ import {ItemsDataService} from './services/items-data.service';
 import {
   BehaviorSubject,
   combineLatest,
-  Observable, Subscription,
+  Observable, of, Subscription,
   throwError
 } from 'rxjs/index';
 import {Item} from './item';
 import {
-  catchError, debounceTime,
+  catchError,
   distinctUntilChanged,
   map,
-  takeLast,
-  tap,
 } from 'rxjs/internal/operators';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
@@ -26,6 +24,7 @@ export class MultiselectComponent implements OnInit {
   private mySet = new Set<Item>();
   public dropdownList$: Observable<Item[]>;
   public selectedItems$: Subscription;
+  // public selectedItems$: Observable<Item[]>;
   public selectedItems: Item[] = [];
   public searchItem$ = new BehaviorSubject<string>('');
   public isOpen = false;
@@ -57,6 +56,8 @@ export class MultiselectComponent implements OnInit {
         this.isOpen = true;
         this.selectedItems = Array.from(this.mySet).sort(this.compareTitleDown);
         this.searchItem$.next(data);
+        // console.log(this.selectedItems);
+        // console.log(this.mySet);
       }
     );
   }
@@ -72,59 +73,59 @@ export class MultiselectComponent implements OnInit {
             }
           }
         });
-
+        event.id = null;
         return items.filter((item: Item) => item.selected);
       }),
       catchError(error => throwError(error)),
-    )
-      .subscribe((items: Item[]) => items.forEach(item => this.mySet.add(item)));
+    ).subscribe((items: Item[]) => items.forEach(item => this.mySet.add(item)));
 
     this.selectedItems = Array.from(this.mySet).sort(this.compareTitleDown);
   }
 
   public deleteItem(id: number): void {
-    this.selectedItems$ = this.dropdownList$.pipe(
-      map((items: Item[]) => {
-        items.forEach((item: Item) => {
-          if (item.id === id) {
-            item.selected = false;
-            this.mySet.delete(item);
-          }
-        });
+    // console.log(this.selectedItems);
+    let deletedItem: Item;
 
-        return items.filter((item: Item) => item.selected);
-      }),
-      catchError(error => throwError(error)),
-    )
-      .subscribe((items: Item[]) => items.forEach(item => this.mySet.add(item)));
+    this.selectedItems.forEach((item: Item) => {
+      if (item.id === id) {
+        deletedItem = item;
+        deletedItem.selected = false;
+        this.mySet.delete(deletedItem);
+      }
+    });
 
     this.selectedItems = Array.from(this.mySet).sort(this.compareTitleDown);
-    console.log(this.mySet);
+
+    // console.log(this.mySet);
+    // console.log(this.selectedItems);
+    // this.selectedItems$ = this.dropdownList$.pipe(
+    //   map((items: Item[]) => {
+    //     console.log(items);
+    //     items.forEach((item: Item) => {
+    //       if (item.id === id) {
+    //         item.selected = false;
+    //         console.log(item);
+    //         this.mySet.delete(item);
+    //       }
+    //     });
+    //     console.log(this.mySet);
+    //
+    //     return items.filter((item: Item) => item.selected);
+    //   }),
+    //   catchError(error => throwError(error)),
+    // ).subscribe((items: Item[]) => items.forEach(item => this.mySet.add(item)));
+
+    // this.selectedItems = Array.from(this.mySet).sort(this.compareTitleDown);
+    // console.log(this.selectedItems);
   }
 
   public onkeyup() {
-    // this.count++;
-    // console.log(this.searchItem$.getValue());
-    // if (!this.searchItem$.getValue()) {
-    //   this.selectedItems$ = this.dropdownList$.pipe(
-    //     tap(a => console.log('before', a)),
-    //     map((items: Item[]) => {
-    //       let filteredItems = items.filter((item: Item) => item.selected);
-    //       let lastElement = filteredItems.slice(-1)[0];
-    //       if (lastElement) {
-    //         lastElement.selected = false;
-    //       }
-    //       console.log(items.filter((item: Item) => item.selected).slice(-1)[0]);
-    //       return filteredItems;
-    //     }),
-    //     tap(a => console.log('after', a)),
-    //     catchError(error => throwError(error)),
-    //   );
-    // }
-    // console.log('backspace', this.count);
-
-    // this.dropdownList$.subscribe(a => console.log('drop', a));
-    // this.selectedItems$.subscribe(a => console.log('select', a));
+    if (!this.searchItem$.getValue() && this.mySet.size) {
+      const lastItem = this.selectedItems.slice(-1)[0];
+      lastItem.selected = false;
+      this.mySet.delete(lastItem);
+      this.selectedItems = Array.from(this.mySet).sort(this.compareTitleDown);
+    }
   }
 
   public open(): void {
