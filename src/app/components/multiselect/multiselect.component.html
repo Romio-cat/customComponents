@@ -1,7 +1,7 @@
 <div class="selected-items">
 
   <div class="item-container">
-    <div class="item" *ngFor="let item of selectedItems$ | async">
+    <div class="item" *ngFor="let item of selectedItems">
       {{ item.title | titlecase }}
       <button class="delete-item" (click)="deleteItem(item.id)">&#10006;</button>
     </div>
@@ -9,7 +9,8 @@
     <label class="input-container" [formGroup]="form">
       <input
         formControlName="item"
-        [placeholder]="(selectedItems$ | async)?.length ? '' : 'Search items'">
+        (keydown.backspace)="onkeyup($event)"
+        [placeholder]="selectedItems.length ? '' : 'Search items'">
     </label>
   </div>
 

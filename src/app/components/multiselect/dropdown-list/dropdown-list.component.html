@@ -6,7 +6,7 @@
     {{ item.title | titlecase }}
     <input
       type="checkbox"
-      [ngModel]="item.selected"
+      [(ngModel)]="item.selected"
       (change)="onChange($event, item.id)">
     <span class="mark"></span>
   </label>
