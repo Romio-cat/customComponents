@@ -9,21 +9,23 @@ import { ProceduresPaginationComponent } from './procedures-pagination/procedure
 import { ProceduresSearchComponent } from './procedures-search/procedures-search.component';
 import { ProceduresListComponent } from './procedures-list/procedures-list.component';
 import { ProceduresComponent } from './procedures.component';
+import { ProceduresRoutingModule } from './procedures-routing/procedures-routing.module';
 
 @NgModule({
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    ProceduresRoutingModule,
+  ],
+  exports: [
+    ProceduresComponent,
+  ],
   declarations: [
     ProceduresComponent,
     ProceduresListComponent,
     ProceduresSearchComponent,
     ProceduresPaginationComponent,
     ProcedureDetailComponent,
-  ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-  ],
-  exports: [
-    ProceduresComponent,
   ],
   providers: [
     ProcedureDataService,

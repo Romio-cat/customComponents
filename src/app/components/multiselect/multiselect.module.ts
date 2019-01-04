@@ -5,12 +5,14 @@ import { DropdownListComponent } from './dropdown-list/dropdown-list.component';
 import { ItemsDataService } from './services/items-data.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
+import { MultiselectRoutingModule } from './multiselect-routing/multiselect-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    MultiselectRoutingModule,
   ],
   exports: [
     MultiselectComponent,

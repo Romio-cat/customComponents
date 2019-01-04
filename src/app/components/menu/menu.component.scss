@@ -1,0 +1,15 @@
+
+a {
+  margin-right: 5px;
+  padding: 20px 40px;
+  background-color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  border: 1px solid grey;
+  box-shadow: 0 6px 6px rgba(10,16,20,.15), 0 0 52px rgba(10,16,20,.12);
+  transition: box-shadow .3s;
+
+  &:hover {
+    box-shadow: 0 8px 8px rgba(10,16,20,.24), 0 0 8px rgba(10,16,20,.12);
+  }
+}

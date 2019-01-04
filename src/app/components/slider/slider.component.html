@@ -1,10 +1,14 @@
-<button class="prev" (click)="dec()"></button>
-<button class="next" (click)="inc()"></button>
+<button class="prev" (click)="prevSlide()"></button>
+<button class="next" (click)="nextSlide()"></button>
 
 <div class="slide-wrapper">
   <app-slide
     class="slide"
     *ngFor="let slide of sliders; index as slideIndex"
+    [sliders]="sliders"
+    [slide]="slide"
+    [slideIndex]="slideIndex"
+    [current]="current"
     [ngStyle]="{
       'transform': 'translateX(' + currentTransition[slideIndex] + 'px)',
       'opacity': current === slideIndex ? 1 : 0,
