@@ -17,13 +17,13 @@ export class ClickOutsideDirective {
   public clickOutside = new EventEmitter<boolean>();
 
   @HostListener('document:click', ['$event'])
-  public close(event: MouseEvent): void {
-    if (!event.target) {
+  public close({ target }: MouseEvent): void {
+    if (!target) {
       return;
     }
 
-    const clickedDeleteButton: boolean = (<HTMLButtonElement>event.target).nodeName === 'BUTTON';
-    const clickedInside: boolean = this._elementRef.nativeElement.contains(event.target);
+    const clickedDeleteButton: boolean = (<HTMLElement>target).matches('.delete-item');
+    const clickedInside: boolean = this._elementRef.nativeElement.contains(target);
 
     if (!clickedInside && !clickedDeleteButton) {
       this.clickOutside.emit(false);
