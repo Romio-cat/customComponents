@@ -1,8 +1,6 @@
-<ng-container
-  *ngFor="let item of dropdownList"
-  (click)="clickOut($event)">
+<ng-container *ngIf="dropdownList.length; else notFound">
 
-  <label class="list-items">
+  <label class="list-items" *ngFor="let item of dropdownList">
     {{ item.title | titlecase }}
     <input
       type="checkbox"
