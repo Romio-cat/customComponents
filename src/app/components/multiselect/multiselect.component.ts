@@ -1,18 +1,19 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {ItemsDataService} from './services/items-data.service';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ItemsDataService } from './services/items-data.service';
 import {
   BehaviorSubject,
   combineLatest,
-  Observable, of, Subscription,
-  throwError
+  Observable,
+  Subscription,
+  throwError,
 } from 'rxjs/index';
-import {Item} from './item';
+import { Item } from './item';
 import {
   catchError,
   distinctUntilChanged,
   map,
 } from 'rxjs/internal/operators';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-multiselect',
@@ -24,7 +25,6 @@ export class MultiselectComponent implements OnInit {
   private mySet = new Set<Item>();
   public dropdownList$: Observable<Item[]>;
   public selectedItems$: Subscription;
-  // public selectedItems$: Observable<Item[]>;
   public selectedItems: Item[] = [];
   public searchItem$ = new BehaviorSubject<string>('');
   public isOpen = false;
@@ -56,8 +56,6 @@ export class MultiselectComponent implements OnInit {
         this.isOpen = true;
         this.selectedItems = Array.from(this.mySet).sort(this.compareTitleDown);
         this.searchItem$.next(data);
-        // console.log(this.selectedItems);
-        // console.log(this.mySet);
       }
     );
   }
@@ -83,7 +81,6 @@ export class MultiselectComponent implements OnInit {
   }
 
   public deleteItem(id: number): void {
-    // console.log(this.selectedItems);
     let deletedItem: Item;
 
     this.selectedItems.forEach((item: Item) => {
@@ -95,41 +92,27 @@ export class MultiselectComponent implements OnInit {
     });
 
     this.selectedItems = Array.from(this.mySet).sort(this.compareTitleDown);
-
-    // console.log(this.mySet);
-    // console.log(this.selectedItems);
-    // this.selectedItems$ = this.dropdownList$.pipe(
-    //   map((items: Item[]) => {
-    //     console.log(items);
-    //     items.forEach((item: Item) => {
-    //       if (item.id === id) {
-    //         item.selected = false;
-    //         console.log(item);
-    //         this.mySet.delete(item);
-    //       }
-    //     });
-    //     console.log(this.mySet);
-    //
-    //     return items.filter((item: Item) => item.selected);
-    //   }),
-    //   catchError(error => throwError(error)),
-    // ).subscribe((items: Item[]) => items.forEach(item => this.mySet.add(item)));
-
-    // this.selectedItems = Array.from(this.mySet).sort(this.compareTitleDown);
-    // console.log(this.selectedItems);
   }
 
-  public onkeyup() {
+  public backspace() {
     if (!this.searchItem$.getValue() && this.mySet.size) {
       const lastItem = this.selectedItems.slice(-1)[0];
+
       lastItem.selected = false;
       this.mySet.delete(lastItem);
       this.selectedItems = Array.from(this.mySet).sort(this.compareTitleDown);
+    } else if (!this.mySet.size) {
+      this.isOpen = false;
     }
   }
 
   public open(): void {
     this.isOpen = !this.isOpen;
+  }
+
+  public clickOutside(event): void {
+    this.form.get('item').setValue('');
+    this.isOpen = event;
   }
 
   private compareTitleDown(a: Item, b: Item) {

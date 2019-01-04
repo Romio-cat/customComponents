@@ -1,4 +1,7 @@
-<div class="selected-items">
+<div
+  class="selected-items"
+  appClickOutside
+  (clickOutside)="clickOutside($event)">
 
   <div class="item-container">
     <div class="item" *ngFor="let item of selectedItems">
@@ -9,7 +12,7 @@
     <label class="input-container" [formGroup]="form">
       <input
         formControlName="item"
-        (keydown.backspace)="onkeyup($event)"
+        (keydown.backspace)="backspace()"
         [placeholder]="selectedItems.length ? '' : 'Search items'">
     </label>
   </div>
@@ -23,7 +26,7 @@
   <app-dropdown-list
     *ngIf="isOpen"
     [dropdownList]="dropdownList$ | async"
-    (onChanged)="onChanged($event)">
+    (changed)="onChanged($event)">
   </app-dropdown-list>
 </div>
 

@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { MultiselectComponent } from './multiselect.component';
 import { DropdownListComponent } from './dropdown-list/dropdown-list.component';
 import { ItemsDataService } from './services/items-data.service';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ClickOutsideDirective } from './directives/click-outside.directive';
 
 @NgModule({
   imports: [
@@ -14,7 +15,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
   exports: [
     MultiselectComponent,
   ],
-  declarations: [MultiselectComponent, DropdownListComponent],
+  declarations: [
+    MultiselectComponent,
+    DropdownListComponent,
+    ClickOutsideDirective,
+  ],
   providers: [ItemsDataService],
 })
 export class MultiselectModule { }
