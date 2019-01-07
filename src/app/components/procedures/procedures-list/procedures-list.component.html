@@ -1,4 +1,4 @@
-<ng-container *ngIf="pagedProcedures; else thenBlock">
+<ng-container *ngIf="(pagedProcedures | async)?.length; else thenBlock">
   <header>
     <span class="title" (click)="titleSort()">Название (sort)</span>
     <span>ID</span>
