@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+  public menuItems: string[] = ['procedures', 'slider', 'multiselect'];
 
   constructor() { }
 

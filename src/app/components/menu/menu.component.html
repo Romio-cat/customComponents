@@ -1,7 +1,5 @@
 <div class="links-container">
-    <a routerLink="/procedures">Procedures</a>
-
-    <a routerLink="/slider">Slider</a>
-
-    <a routerLink="/multiselect">Multiselect</a>
+    <a *ngFor="let menuItem of menuItems" routerLink="/{{menuItem}}">
+        {{menuItem | titlecase}}
+    </a>
 </div>
