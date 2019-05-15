@@ -18,6 +18,10 @@ const routes: Routes = [
     path: PathConfig.MULTISELECT,
     loadChildren: '../components/multiselect/multiselect.module#MultiselectModule',
   },
+  {
+    path: PathConfig.MASKINPUT,
+    loadChildren: '../components/mask-input/mask-input.module#MaskInputModule',
+  },
   { path: PathConfig.ANY, redirectTo: PathConfig.MENU, pathMatch: 'full' },
 ];
 

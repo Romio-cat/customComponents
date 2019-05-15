@@ -1,0 +1,12 @@
+<form [formGroup]="cardForm" (ngSubmit)="submitState(localState.value)" autocomplete="off">
+
+  <app-mask-input
+    [title]="'Card Number'"
+    formControlName="card"
+    [mask]="cardMask">
+  </app-mask-input>
+
+  <button class="btn">
+    <span>Submit</span>
+  </button>
+</form>
