@@ -2,11 +2,11 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
-  Input, OnChanges,
-  OnInit,
+  Input,
   Output,
 } from '@angular/core';
 import {Procedure} from '../procedure';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'app-procedures-list',
@@ -14,25 +14,16 @@ import {Procedure} from '../procedure';
   styleUrls: ['./procedures-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProceduresListComponent implements OnInit, OnChanges {
-  @Input() pagedProcedures: Procedure[];
+export class ProceduresListComponent {
+  @Input() pagedProcedures: BehaviorSubject<Procedure[]>;
+  // tslint:disable-next-line:no-output-on-prefix
   @Output() onSort = new EventEmitter();
-
-  constructor() {
-  }
-
-  ngOnChanges() {
-    // console.log(this.pagedProcedures);
-  }
-
-  ngOnInit() {
-  }
 
   public titleSort(): void {
     this.onSort.emit();
   }
 
-  public trackByFn(index, item) {
+  public trackByFn(index) {
     return index;
   }
 }
