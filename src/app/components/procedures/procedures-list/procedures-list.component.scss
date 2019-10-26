@@ -13,7 +13,7 @@ header {
 }
 
 header,
-/deep/ .detail {
+::ng-deep .detail {
   display: grid;
   grid-template-columns: 26% 27% 10% 12% 20%;
   grid-column-gap: 10px;

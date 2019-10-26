@@ -8,43 +8,22 @@ const routes: Routes = [
   { path: PathConfig.MENU, component: MenuComponent },
   {
     path: PathConfig.PROCEDURES,
-    loadChildren: '../components/procedures/procedures.module#ProceduresModule',
+    loadChildren: () => import('../components/procedures/procedures.module').then(m => m.ProceduresModule),
   },
   {
     path: PathConfig.SLIDER,
-    loadChildren: '../components/slider/slider.module#SliderModule',
+    loadChildren: () => import('../components/slider/slider.module').then(m => m.SliderModule),
   },
   {
     path: PathConfig.MULTISELECT,
-    loadChildren: '../components/multiselect/multiselect.module#MultiselectModule',
+    loadChildren: () => import('../components/multiselect/multiselect.module').then(m => m.MultiselectModule),
   },
   {
     path: PathConfig.MASKINPUT,
-    loadChildren: '../components/mask-input/mask-input.module#MaskInputModule',
+    loadChildren: () => import('../components/mask-input/mask-input.module').then(m => m.MaskInputModule),
   },
   { path: PathConfig.ANY, redirectTo: PathConfig.MENU, pathMatch: 'full' },
 ];
-
-// const appRoutes: Routes = [
-//   {
-//     path: PathConfig.MENU,
-//     component: MenuComponent,
-//   },
-//   {
-//     path: PathConfig.PROCEDURES,
-//     loadChildren: '../components/procedures/procedures.module#ProceduresModule',
-//   },
-//   {
-//     path: PathConfig.SLIDER,
-//     loadChildren: '../components/slider/slider.module#SliderModule',
-//   },
-//   {
-//     path: PathConfig.MULTISELECT,
-//     loadChildren: '../components/multiselect/multiselect.module#MultiselectModule',
-//   },
-//   { path: '', redirectTo: PathConfig.MENU, pathMatch: 'full' },
-//   { path: PathConfig.ANY, redirectTo: '' }
-// ];
 
 @NgModule({
   imports: [

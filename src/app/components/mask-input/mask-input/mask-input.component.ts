@@ -14,7 +14,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/f
   ]
 })
 export class MaskInputComponent implements ControlValueAccessor, OnInit {
-  @ViewChild('mdInputEl') public mdInputEl: ElementRef;
+  @ViewChild('mdInputEl', {static: true}) public mdInputEl: ElementRef;
 
   @Input() mask: any[];
   @Input() title: string;
@@ -73,11 +73,9 @@ export class MaskInputComponent implements ControlValueAccessor, OnInit {
     this._onTouched = fn;
   }
 
-  private _onChange: Function = (_: any) => {
-  }
+  private _onChange: Function = (_: any) => {};
 
-  private _onTouched: Function = (_: any) => {
-  }
+  private _onTouched: Function = (_: any) => {};
 
   private _convertMaskToPlaceholder(): string {
     return this.mask.map((char) => {
