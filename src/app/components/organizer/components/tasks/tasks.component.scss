@@ -1,0 +1,60 @@
+:host {
+  display: block;
+  padding: 1rem;
+  border: 1px solid black;
+}
+
+header {
+  margin-bottom: 1rem;
+
+  hr {
+    margin: 0;
+  }
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  background-color: #fff;
+
+  .task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 1rem;
+    border: 1px solid #ccc;
+    margin-bottom: .5rem;
+
+    .remove-btn {
+      padding: .2rem 1rem;
+      border: 1px solid #ccc;
+      background-color: #ff590e;
+      cursor: pointer;
+    }
+  }
+}
+
+form {
+  display: flex;
+
+  input {
+    display: block;
+    width: 100%;
+    height: 2rem;
+    margin-right: .2rem;
+    padding: .5rem;
+    line-height: 1.6;
+  }
+
+  button {
+    padding: .2rem 2rem;
+    border: 1px solid #ccc;
+    background-color: #ff590e;
+    cursor: pointer;
+
+    &:disabled {
+      background-color: #3a3737;
+      cursor: default;
+    }
+  }
+}

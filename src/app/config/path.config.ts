@@ -5,4 +5,5 @@ export class PathConfig {
   public static readonly SLIDER = 'slider';
   public static readonly MULTISELECT = 'multiselect';
   public static readonly MASKINPUT = 'mask-input';
+  public static readonly ORGANIZER = 'organizer';
 }

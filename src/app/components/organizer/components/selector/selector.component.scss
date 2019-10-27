@@ -1,0 +1,16 @@
+.selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & span {
+    width: 200px;
+    padding: 0 2rem;
+    text-align: center;
+    color: black;
+  }
+
+  & i {
+    cursor: pointer;
+  }
+}

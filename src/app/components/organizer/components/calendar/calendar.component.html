@@ -1,0 +1,19 @@
+<table>
+  <thead>
+    <tr>
+      <th *ngFor="let day of weekDays">{{ day }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let week of calendar">
+      <td *ngFor="let day of week.days"
+          [class.disabled]="day.disabled"
+          (click)="selectDay(day.value)">
+        <span [class.selected]="day.selected"
+              [class.active]="day.active">
+          {{ day.value | moment:'DD' }}
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
