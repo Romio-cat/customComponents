@@ -22,6 +22,10 @@ const routes: Routes = [
     path: PathConfig.MASKINPUT,
     loadChildren: () => import('../components/mask-input/mask-input.module').then(m => m.MaskInputModule),
   },
+  {
+    path: PathConfig.ORGANIZER,
+    loadChildren: () => import('../components/organizer/organizer.module').then(m => m.OrganizerModule),
+  },
   { path: PathConfig.ANY, redirectTo: PathConfig.MENU, pathMatch: 'full' },
 ];
 
