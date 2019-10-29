@@ -1,5 +1,5 @@
 <div class="links-container">
-    <a *ngFor="let menuItem of menuItems" routerLink="/{{menuItem}}">
+    <a *ngFor="let menuItem of menuItems" routerLink="/{{ menuItem.toLocaleLowerCase() }}">
         {{menuItem | titlecase}}
     </a>
 </div>
