@@ -26,6 +26,10 @@ const routes: Routes = [
     path: PathConfig.ORGANIZER,
     loadChildren: () => import('../components/organizer/organizer.module').then(m => m.OrganizerModule),
   },
+  {
+    path: PathConfig.ASTERISK,
+    loadChildren: () => import('../components/asterisk/asterisk.module').then(m => m.AsteriskModule),
+  },
   { path: PathConfig.ANY, redirectTo: PathConfig.MENU, pathMatch: 'full' },
 ];
 

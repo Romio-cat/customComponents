@@ -12,6 +12,7 @@ export class MenuComponent {
     PathConfig.SLIDER,
     PathConfig.MULTISELECT,
     PathConfig.MASKINPUT,
-    PathConfig.ORGANIZER
+    PathConfig.ORGANIZER,
+    PathConfig.ASTERISK
   ];
 }
