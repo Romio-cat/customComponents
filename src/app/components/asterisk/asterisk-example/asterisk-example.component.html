@@ -1,0 +1,8 @@
+<form [formGroup]="astForm" (ngSubmit)="submit()">
+  <div class="form-group">
+    <label for="ast-input">Input field</label>
+    <input type="text" id="ast-input" class="form-control" formControlName="inputControl" required>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!astForm.valid">submit</button>
+</form>
