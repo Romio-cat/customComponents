@@ -9,5 +9,26 @@ body {
   margin-left: 3px;
   color: red;
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1em;
+}
+
+.back {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  padding: 5px 20px;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid grey;
+  text-decoration: none;
+  box-shadow: 0 2px 2px rgba(10,16,20,.15), 0 0 52px rgba(10,16,20,.12);
+  transition: box-shadow .3s;
+
+  &:hover {
+    box-shadow: 0 6px 6px rgba(10,16,20,.15), 0 0 52px rgba(10,16,20,.12);
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }

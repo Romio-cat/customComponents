@@ -7,4 +7,5 @@ export class PathConfig {
   public static readonly MASKINPUT = 'mask-input';
   public static readonly ORGANIZER = 'organizer';
   public static readonly ASTERISK = 'asterisk';
+  public static readonly DYNAMIC_TABS = 'dynamic-tabs';
 }

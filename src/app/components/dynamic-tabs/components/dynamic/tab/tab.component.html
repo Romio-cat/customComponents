@@ -1,0 +1,6 @@
+<div class="tab-content py-3" [hidden]="!active">
+  <div class="tab-pane active">
+    <ng-content></ng-content>
+    <ng-container *ngIf="template" [ngTemplateOutlet]="template" [ngTemplateOutletContext]="{ person: dataContext }"></ng-container>
+  </div>
+</div>

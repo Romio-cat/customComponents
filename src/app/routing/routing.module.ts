@@ -30,6 +30,10 @@ const routes: Routes = [
     path: PathConfig.ASTERISK,
     loadChildren: () => import('../components/asterisk/asterisk.module').then(m => m.AsteriskModule),
   },
+  {
+    path: PathConfig.DYNAMIC_TABS,
+    loadChildren: () => import('../components/dynamic-tabs/dynamic-tabs.module').then(m => m.DynamicTabsModule),
+  },
   { path: PathConfig.ANY, redirectTo: PathConfig.MENU, pathMatch: 'full' },
 ];
 
