@@ -16,6 +16,6 @@ import { AsteriskDirective } from './directives/asterisk.directive';
     ReactiveFormsModule,
     NgbModule,
   ],
-  exports: [AsteriskExampleComponent]
+  exports: [AsteriskExampleComponent, AsteriskDirective]
 })
 export class AsteriskModule { }

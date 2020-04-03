@@ -1,0 +1,43 @@
+<a routerLink="" class="back">&#8592;</a>
+
+<!--<h3>child => parent</h3>-->
+<!--<app-tabs1>-->
+<!--  <app-tab1 [tabTitle]="'Tab 1'">Content 1</app-tab1>-->
+<!--  <app-tab1 tabTitle="Tab 2">Content 2</app-tab1>-->
+<!--</app-tabs1>-->
+
+<!--<h3 class="mt-5">parent => child</h3>-->
+<!--<app-tabs2>-->
+<!--  <app-tab2 [tabTitle]="'Tab 1'">Content 1</app-tab2>-->
+<!--  <app-tab2 tabTitle="Tab 2">Content 2</app-tab2>-->
+<!--</app-tabs2>-->
+
+<h3 class="mt-5">Dynamic</h3>
+
+<app-tabs>
+  <app-tab [tabTitle]="'People'">
+    <h5>List of People</h5>
+
+    <app-people-list [people]="people"
+                     (addPerson)="onAddPerson()"
+                     (editPerson)="onEditPerson($event)">
+    </app-people-list>
+
+    <hr />
+    <button class="btn btn-outline-primary" (click)="onOpenAbout()">
+      <i class="glyphicon glyphicon-question-sign"></i> About this
+    </button>
+
+  </app-tab>
+</app-tabs>
+
+<ng-template let-person="person" #personEdit>
+  <app-person-edit [person]="person" (savePerson)="onPersonFormSubmit($event)"></app-person-edit>
+</ng-template>
+
+<ng-template #about>
+  <p>
+    Specific about <code>ViewContainerRef</code>,
+    <code>ComponentResolverFactory</code> etc.
+  </p>
+</ng-template>

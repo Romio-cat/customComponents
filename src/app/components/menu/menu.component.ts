@@ -13,6 +13,7 @@ export class MenuComponent {
     PathConfig.MULTISELECT,
     PathConfig.MASKINPUT,
     PathConfig.ORGANIZER,
-    PathConfig.ASTERISK
+    PathConfig.ASTERISK,
+    PathConfig.DYNAMIC_TABS,
   ];
 }
